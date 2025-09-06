@@ -4,12 +4,12 @@ import java.util.List;
 
 public class Program {
 	public static void main(String[] args) {
-		System.out.println("Total products: " + OnlineStore.getTotalProducts()); 
+		System.out.println("Total products across carts: " + OnlineStore.getTotalProducts()); 
 		
-		List<Product> products = List.of(
-			    new Product("Headphones", "Brand", 1400),
-			    new Product("Mouse", "Brand", 550),
-			    new Product("Watch", "Brand", 1580)
+		List<Purchasable> products = List.of(
+			    new PhysicalProduct("Headphones", "Razer", 100, 0.4),
+			    new DigitalProduct("Book", "Wattpad", 15, 200),
+			    new PhysicalProduct("Watch", "Apple", 1000, 0.2)
 			);
 		
 		Cart cart = new Cart(products);
@@ -17,12 +17,15 @@ public class Program {
 		
 		OnlineStore.addUser(user);
 		
-		System.out.println("Total products: " + OnlineStore.getTotalProducts()); 
+		System.out.println("Total products across carts: " + OnlineStore.getTotalProducts()); 
 		
-		Product p7 = new Product("Keyboard", "Brand", 450);
-		cart.addProduct(p7);
+		Product p7 = new PhysicalProduct("Keyboard", "Brand", 450, 0.5);
+		cart.addItem(p7);
 		
-		System.out.println("Total products: " + OnlineStore.getTotalProducts()); 
+		System.out.println("Total products across carts: " + OnlineStore.getTotalProducts()); 
+		
+		cart.showCart();
+		cart.purchaseAll();
 
 	}
 

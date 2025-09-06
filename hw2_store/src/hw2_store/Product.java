@@ -1,6 +1,6 @@
 package hw2_store;
 
-public class Product {
+public abstract class Product implements Purchasable {
 	private String name;
 	private String brand;
 	private int price;
@@ -40,6 +40,9 @@ public class Product {
         this.brand = brand;
     }
 	
+    @Override
+	public abstract String toString();
+
 	@SuppressWarnings("removal")
 	@Override
     protected void finalize() throws Throwable {

@@ -12,9 +12,9 @@ public class OnlineStore {
         users = new ArrayList<>();
         totalProducts = 0;
 
-        Product p1 = new Product("Phone", "Brand1", 660);
-        Product p2 = new Product("Charger", "Brand2", 30);
-        Product p3 = new Product("Laptop", "Brand3", 1650);
+        Product p1 = new PhysicalProduct ("Phone", "Nokia", 100, 0.2);
+        Product p2 = new PhysicalProduct("Charger", "Samsung", 30, 0.1);
+        Product p3 = new PhysicalProduct("Laptop", "Apple", 2250, 2);
 
         Cart cart1 = new Cart(p1,p2);
         Cart cart2 = new Cart(p3);
@@ -44,11 +44,27 @@ public class OnlineStore {
     
     private static void updateTotalProducts(List<Cart> carts) {
         for (Cart cart : carts) {
-            totalProducts += cart.getProducts().size();
+            totalProducts += cart.getItems().size();
         }
     }
     public static void incrementTotalProducts(int count) {
         totalProducts += count;
+    }
+    public static void purchaseAll(Purchasable[] items) {
+        if (items == null || items.length == 0) {
+            System.out.println("Cart is empty");
+            return;
+        }
+
+        int total = 0;
+        System.out.println("\nPurchasing items:");
+        for (Purchasable i : items) {
+            System.out.println(i.getName() + " - " + i.getPrice() + "$");
+            total += i.getPrice();
+        }
+
+        System.out.println("\nPurchase successful");
+        System.out.println("Total cost: " + total + "$");
     }
 
 }

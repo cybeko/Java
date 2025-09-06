@@ -5,46 +5,49 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Cart {
-	private List<Product> products;
+	private List<Purchasable> items;
 	
 	public Cart() {
-        products = new ArrayList<>();
+        items = new ArrayList<>();
     }
 	
-    public Cart(Product... products) {
-        this.products = new ArrayList<>(Arrays.asList(products));
+    public Cart(Purchasable... items) {
+        this.items = new ArrayList<>(Arrays.asList(items));
     }
-    public Cart(List<Product> products) {
-        this.products = new ArrayList<>(products);
+    public Cart(List<Purchasable> items) {
+        this.items = new ArrayList<>(items);
     }
     
-    public List<Product> getProducts() {
-        return products;
+    public List<Purchasable> getItems() {
+        return items;
     }
 	
-	public void addProduct(Product product) {
-        products.add(product);
+	public void addItem(Product product) {
+        items.add(product);
         System.out.println(product.getName() + " added to cart");
         
         OnlineStore.incrementTotalProducts(1);
 
     }
 
-    public void removeProduct(Product product) {
-        products.remove(product);
+    public void removeItem(Product product) {
+        items.remove(product);
         System.out.println(product.getName() + " removed from cart");
     }
     
     public void showCart() {
-        if (products.isEmpty()) {
-            System.out.println("Cart is empty");
+        if (items.isEmpty()) {
+            System.out.println("\nCart is empty");
             return;
         }
         else {
-            System.out.println("Cart:");
-            for (Product p : products) {
-                System.out.println(p.getName() + " (" + p.getBrand() + ") - " + p.getPrice() + "$");
+            System.out.println("\nCart:");
+            for (Purchasable i : items) {
+                System.out.println(i.getName() + " (" + i.getBrand() + ") - " + i.getPrice() + "$");
             }
         }
+    }
+    public void purchaseAll() {
+        OnlineStore.purchaseAll(items.toArray(new Purchasable[0]));
     }
 }
