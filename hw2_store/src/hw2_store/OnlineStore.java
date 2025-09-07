@@ -66,5 +66,19 @@ public class OnlineStore {
         System.out.println("\nPurchase successful");
         System.out.println("Total cost: " + total + "$");
     }
+    
+    public static Product findProductById(int id) throws ProductNotFoundException {
+        for (User user : users) {
+            for (Cart cart : user.getCarts()) {
+                for (Purchasable item : cart.getItems()) {
+                    if (item instanceof Product product) {
+                        if (product.getId() == id) return product;
+                    }
+                }
+            }
+        }
+        throw new ProductNotFoundException("Product with (ID: " + id + ") not found");
+    }
 
 }
+

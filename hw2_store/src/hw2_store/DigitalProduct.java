@@ -23,6 +23,8 @@ public class DigitalProduct extends Product {
     
     @Override
     public String toString() {
-        return getName() + " (" + getBrand() + ") - " + getPrice() + "$, Memory: " + memorySize + "mb";
+        return getName() + " (" + getBrand() + "), (ID: " + getId() + ") - " + getPrice() + "$, Memory: " + memorySize + "mb";
+        
     }
+
 }

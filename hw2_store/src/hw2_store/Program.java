@@ -26,7 +26,16 @@ public class Program {
 		
 		cart.showCart();
 		cart.purchaseAll();
-
+		
+		try {
+            Product p1 = OnlineStore.findProductById(1);
+            System.out.println(p1);
+            
+            Product p2 = OnlineStore.findProductById(128);
+            System.out.println(p2);
+            
+        } catch (ProductNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
 	}
-
 }

@@ -23,6 +23,6 @@ public class PhysicalProduct extends Product {
 
     @Override
     public String toString() {
-        return getName() + " (" + getBrand() + ") - " + getPrice() + "$, Weight: " + weight + "kg";
+        return getName() + " (" + getBrand() + "), (ID: " + getId() + ") - " + getPrice() + "$, Weight: " + weight + "kg";
     }
 }

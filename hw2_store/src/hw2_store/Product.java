@@ -1,11 +1,15 @@
 package hw2_store;
 
 public abstract class Product implements Purchasable {
+
+    private int id;
+	private static int incrId = 1;
 	private String name;
 	private String brand;
 	private int price;
 	
 	public Product(String name, String brand, int price) {
+		this.id = incrId++;
         this.name = name;
         this.brand = brand;
         this.setPrice(price);
@@ -17,6 +21,9 @@ public abstract class Product implements Purchasable {
         this.setPrice(0);
 	}
 
+	public int getId() {
+        return id;
+    }
 	public int getPrice() {
 		return price;
 	}
