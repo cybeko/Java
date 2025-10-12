@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generated Table</title>
+  <link rel="stylesheet" href="css/table.css">
+</head>
+<body>
+  <h2>Generated Table</h2>
+  <div id="table-container"></div>
+  <a href="index.html">Back to Generate</a>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('rows')) {
+      fetch(`/hw4_tomcat/TableServlet?` + params.toString())
+        .then(response => response.text())
+        .then(tableHtml => {
+          document.getElementById('table-container').innerHTML = tableHtml;
+        });
+    }
+  </script>
+</body>
+</html>
